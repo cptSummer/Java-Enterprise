@@ -1,0 +1,83 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport"
+    content="width=device-width, user-scalable=no, initial-scale=1.0, maximum-scale=1.0, minimum-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Title</title>
+</head>
+<body style="margin: 0;
+             background-color: hsl(0, 0%, 98%);
+             color: #333;">
+<!--Form to insert users-->
+<form method="post" action="/save" th:object="${user}"
+      style="box-sizing: border-box; padding: 2rem; border-radius: 1rem;
+      background-color: hsl(0, 0%, 100%);
+      border: 4px solid hsl(0, 0%, 90%);
+      display: grid;
+      grid-template-columns: 1fr 1fr;
+      gap: 2rem;
+      width: 20%;
+      align-content: center">
+    <table>
+        <tr>
+            <td>Name:</td>
+            <td><label>
+                <input required type="text" th:field="*{firstName}" placeholder="name..."/>
+            </label></td>
+        </tr>
+        <tr>
+            <td>Phone:</td>
+            <td><label>
+                <input required type="text" th:field="*{phone} " placeholder="phone..."/>
+            </label></td>
+        </tr>
+        <tr>
+            <td>Email:</td>
+            <td><label>
+                <input required type="text" th:field="*{email}" placeholder="email..."/>
+            </label></td>
+        </tr>
+        <tr>
+            <td colspan="2"><input type="submit" value="create"></td>
+        </tr>
+    </table>
+</form>
+
+<!--get user-->
+<form th:action="@{/search}" method="get" style="margin-top: 10px; margin-bottom: 10px">
+    <input type="text" name="name" th:value="${name}">
+    <input type="submit" value="search">
+</form>
+<!--Output users-->
+<table style="background: rgba(219,255,217,0.93); border: 2px solid black; text-decoration: none">
+    <tr>
+        <th>ID</th>
+        <th>First Name</th>
+        <th>Phone</th>
+        <th>Email</th>
+        <th>Delete</th>
+    </tr>
+    <tr th:each="user : ${getUsers}">
+        <td th:text="${user.id}"></td>
+        <td th:text="${user.firstName}"></td>
+        <td th:text="${user.phone}"></td>
+        <td th:text="${user.email}"></td>
+        <td><a th:href="@{/delete(id=${user.getId()})}" style="color: black">delete</a></td>
+    </tr>
+</table>
+
+
+<a href="/" style="color: black;
+border-radius: 5px;
+border: 1px solid black;
+background: rgba(164,255,153,0.93);
+padding: 2px;
+margin-top: 50px;
+text-decoration: none;
+box-sizing: border-box">To main page</a>
+
+</body>
+</html>
+

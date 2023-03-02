@@ -1,0 +1,18 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<module type="JAVA_MODULE" version="4">
+  <component name="NewModuleRootManager" LANGUAGE_LEVEL="JDK_18">
+    <output url="file://$MODULE_DIR$/container/target/classes" />
+    <output-test url="file://$MODULE_DIR$/container/target/test-classes" />
+    <content url="file://$MODULE_DIR$/container">
+      <sourceFolder url="file://$MODULE_DIR$/container/src/main/java" isTestSource="false" />
+      <sourceFolder url="file://$MODULE_DIR$/container/src/main/resources" type="java-resource" />
+      <sourceFolder url="file://$MODULE_DIR$/container/src/test/java" isTestSource="true" />
+      <excludeFolder url="file://$MODULE_DIR$/container/${project.build.directory}/classes" />
+      <excludeFolder url="file://$MODULE_DIR$/container/${project.build.directory}/test-classes" />
+      <excludeFolder url="file://$MODULE_DIR$/container/target" />
+    </content>
+    <orderEntry type="jdk" jdkName="openjdk-18" jdkType="JavaSDK" />
+    <orderEntry type="sourceFolder" forTests="false" />
+    <orderEntry type="library" name="Maven: org.projectlombok:lombok:1.18.24" level="project" />
+  </component>
+</module>
