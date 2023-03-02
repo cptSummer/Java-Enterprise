@@ -14,17 +14,16 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class AnnotationConfigurationBeanDefinitionReader implements BeanDefinitionReader {
-
-    private final String packageName ;
+    private final String packageName;
     private final PackageScanner packageScanner;
 
     @Override
     public List<BeanDefinition> read() {
         return packageScanner.find(packageName).stream()
-                .filter(c->c.isAnnotationPresent(Configuration.class))
+                .filter(c -> c.isAnnotationPresent(Configuration.class))
                 .map(Class::getDeclaredMethods)
                 .flatMap(Arrays::stream)
-                .filter(m->m.isAnnotationPresent(Bean.class))
+                .filter(m -> m.isAnnotationPresent(Bean.class))
                 .map(this::toBeanDefinition)
                 .collect(Collectors.toList());
     }

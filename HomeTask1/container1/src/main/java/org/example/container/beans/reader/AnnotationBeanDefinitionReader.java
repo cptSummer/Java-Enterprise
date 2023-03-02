@@ -12,10 +12,12 @@ import java.util.stream.Collectors;
 
 @RequiredArgsConstructor
 public class AnnotationBeanDefinitionReader implements BeanDefinitionReader {
-
-    private final String packageName ;
+    private final String packageName;
     private final PackageScanner packageScanner;
-    private final static List<Class> ANNOTATIONS = List.of(Component.class, Configuration.class);
+    private final static List<Class> ANNOTATIONS = List.of(
+            Component.class,
+            Configuration.class
+    );
 
     @Override
     public List<BeanDefinition> read() {
@@ -27,11 +29,10 @@ public class AnnotationBeanDefinitionReader implements BeanDefinitionReader {
     }
 
     private boolean testAnnotations(Class aClass) {
-        return ANNOTATIONS.stream().anyMatch(ann->aClass.isAnnotationPresent(ann));
+        return ANNOTATIONS.stream().anyMatch(ann -> aClass.isAnnotationPresent(ann));
     }
 
     private BeanDefinition toBeanDefinition(Class aClass) {
-
         return new BeanDefinition(
                 aClass.getSimpleName(),
                 aClass,
